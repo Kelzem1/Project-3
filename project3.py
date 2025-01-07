@@ -1,3 +1,5 @@
+from termcolor import colored
+
 def add_person():
     name = input("Name: ")
     age = input("Age: ")
@@ -49,28 +51,34 @@ print("")
 
 #LIST OF PEOPLE
 people = [
-    {"name": "Kelu", "age": "27", "email": "rodolfomews@gmail.com"},
+    {"name": "Kelu", "age": "27", "email": "rodolfo@gmail.com"},
     {"name": "Nat", "age": "25", "email": "natalinerja@gmail.com"}
     ]
 
 while True:
+    
     print("Contact list size: ",  len(people))
-    command = input("You can 'ADD(a)', 'DELETE(d)' or 'SEARCH(s)'. Press 'q' for quit: ").lower()
-
+    print("-----------------------------------")
+    command = input("Select option: \n'SHOW LIST(ls)' \n'ADD(a)'\n'DELETE(d)'\n'SEARCH(s)'\n'QUIT(q)'\n ").lower()
+    print("-----------------------------------")
     
 
     if command == "a":
         person = add_person()
         people.append(person)
-        print("Perdon added")
+        print("Person added")
+        display_people(people)
     elif command == "d":
         delete_person(people)
+        display_people(people)
     elif command == "s":
         search(people)
+    elif command == "ls":
+        display_people(people)
+        print("")
     elif command == "q":
         print("See you later!")
         break
     else:
         print("Invalid expression")
 
-print(people)
