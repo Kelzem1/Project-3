@@ -1,4 +1,4 @@
-from termcolor import colored
+import json
 
 def add_person():
     name = input("Name: ")
@@ -50,10 +50,9 @@ print("Hi welcome to my agenda! ")
 print("")
 
 #LIST OF PEOPLE
-people = [
-    {"name": "Kelu", "age": "27", "email": "rodolfo@gmail.com"},
-    {"name": "Nat", "age": "25", "email": "natalinerja@gmail.com"}
-    ]
+with open("contacts.json", "r") as f:
+    people = json.load(f)["contacts"]
+
 
 while True:
     
@@ -81,4 +80,7 @@ while True:
         break
     else:
         print("Invalid expression")
+        
+with open("contacts.json", "w") as f:
+    json.dump({"contacts": people}, f)
 
